@@ -1,0 +1,24 @@
+{
+  "signatures": [
+    {
+      "name": "NULL_SCAN_ATTEMPT",
+      "flags": 0,
+      "description": "Detection of a TCP packet with no flags set. Used for stealth scanning."
+    },
+    {
+      "name": "SYN_FIN_ANOMALY",
+      "flags": 3,
+      "description": "Detection of SYN (2) and FIN (1) flags set simultaneously. This is a TCP violation."
+    },
+    {
+      "name": "XMAS_SCAN_DETECTION",
+      "flags": 41,
+      "description": "Detection of FIN (1), PSH (8), and URG (32) flags. 'Lights up' the packet like a Christmas tree."
+    },
+    {
+      "name": "MALICIOUS_PUSH_PAYLOAD",
+      "flags": 8,
+      "description": "Detection of the PSH flag, often used in manual data injection attempts."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "general": {
+    "log_file": "secsuite.log",
+    "log_level": "INFO",
+    "log_max_size": 10485760,
+    "log_backup_count": 5,
+    "pid_file": "secsuite.pid"
+  },
+  "nids": {
+    "enabled": true,
+    "ports": [
+      21,
+      4444,
+      7777,
+      8888,
+      9999,
+      9090
+    ],
+    "scan_threshold": 5,
+    "signatures_file": "signatures.json",
+    "bind_address": "0.0.0.0",
+    "log_file": "ids_log.json"
+  },
+  "hips": {
+    "enabled": true,
+    "watch_zones": [],
+    "safe_tools": [
+      "mousepad",
+      "nano",
+      "vim",
+      "python3",
+      "thunar",
+      "code",
+      "cat",
+      "less",
+      "tail",
+      "grep",
+      "cat"
+    ],
+    "poll_interval": 0.8,
+    "log_file": "hips.log"
+  },
+  "fim": {
+    "enabled": true,
+    "target_dir": ".",
+    "algorithm": "sha256",
+    "chunk_size": 4096,
+    "baseline_file": "baseline.json",
+    "secret_key": "",
+    "exclude_patterns": [
+      ".git",
+      "__pycache__",
+      "*.pyc",
+      "*.log",
+      "*.pid",
+      "*.json",
+      "*.sqlite"
+    ]
+  }
+}
