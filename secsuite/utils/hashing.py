@@ -1,5 +1,5 @@
 """Cryptographic hashing utilities"""
-
+from  __future__ import annotations
 import hashlib
 import hmac
 from enum import Enum
