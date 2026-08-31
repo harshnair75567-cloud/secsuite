@@ -2,11 +2,8 @@
 
 import socket
 import ssl
-import struct
 from contextlib import contextmanager
-from pathlib import Path
-from typing import Generator, Optional, Tuple, Union
-
+from typing import Generator, Optional, Tuple
 
 DEFAULT_BACKLOG = 5
 DEFAULT_TIMEOUT = 30

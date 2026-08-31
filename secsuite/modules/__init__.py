@@ -1,12 +1,12 @@
 """Security Modules"""
 
-from .nids import run_nids
+from .fim import run_fim_audit, run_fim_baseline
 from .hips import run_hips
-from .fim import run_fim_baseline, run_fim_audit
+from .nids import run_nids
 
 __all__ = [
-    "run_nids",
-    "run_hips",
+    "run_fim_audit",
     "run_fim_baseline",
-    "run_fim_audit"
+    "run_hips",
+    "run_nids"
 ]

@@ -2,16 +2,12 @@
 
 import json
 import tempfile
-import time
-import threading
 from pathlib import Path
 
-import pytest
-
 from secsuite.config import Config
+from secsuite.modules.fim import audit_directory, create_baseline
 from secsuite.modules.nids.engine import NIDSEngine
-from secsuite.modules.fim import create_baseline, audit_directory
-from secsuite.utils.hashing import hash_file, HashAlgorithm
+from secsuite.utils.hashing import HashAlgorithm, hash_file
 
 
 class TestIntegration:

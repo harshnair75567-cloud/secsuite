@@ -4,16 +4,14 @@ import hashlib
 import tempfile
 from pathlib import Path
 
-import pytest
-
 from secsuite.utils.hashing import (
-    hash_file,
+    HashAlgorithm,
+    IncrementalHasher,
+    generate_hmac,
     hash_bytes,
+    hash_file,
     hash_stream,
     verify_hmac,
-    generate_hmac,
-    IncrementalHasher,
-    HashAlgorithm
 )
 
 

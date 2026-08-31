@@ -3,11 +3,14 @@
 import tempfile
 from pathlib import Path
 
-import pytest
-
-from secsuite.modules.fim.engine import PyHashEngine, FileEntry
-from secsuite.modules.fim.audit import verify_integrity, IntegrityChanges, report_findings
-from secsuite.modules.fim.manifest import create_baseline, audit_directory, save_manifest, load_manifest
+from secsuite.modules.fim.audit import verify_integrity
+from secsuite.modules.fim.engine import FileEntry, PyHashEngine
+from secsuite.modules.fim.manifest import (
+    audit_directory,
+    create_baseline,
+    load_manifest,
+    save_manifest,
+)
 
 
 class TestPyHashEngine:

@@ -1,10 +1,11 @@
 """Cryptographic hashing utilities"""
-from  __future__ import annotations
+from __future__ import annotations
+
 import hashlib
 import hmac
 from enum import Enum
 from pathlib import Path
-from typing import BinaryIO, Generator, Optional, Union
+from typing import BinaryIO, Optional, Union
 
 
 class HashAlgorithm(Enum):
@@ -17,7 +18,7 @@ class HashAlgorithm(Enum):
     BLAKE2S = "blake2s"
 
     @classmethod
-    def from_string(cls, value: str) -> 'HashAlgorithm':
+    def from_string(cls, value: str) -> HashAlgorithm:
         """Create from string, defaulting to SHA256"""
         try:
             return cls(value.lower())
@@ -57,7 +58,7 @@ def hash_file(
             for chunk in iter(lambda: f.read(chunk_size), b""):
                 hasher.update(chunk)
         return hasher.hexdigest()
-    except (PermissionError, OSError, IOError):
+    except (PermissionError, OSError):
         return None
 
 
@@ -120,12 +121,12 @@ class IncrementalHasher:
         self.hasher = _get_hasher(algorithm)
         self.algorithm = algorithm
 
-    def update(self, data: bytes) -> 'IncrementalHasher':
+    def update(self, data: bytes) -> IncrementalHasher:
         """Update hash with more data"""
         self.hasher.update(data)
         return self
 
-    def update_file(self, file_path: Union[str, Path], chunk_size: int = DEFAULT_CHUNK_SIZE) -> 'IncrementalHasher':
+    def update_file(self, file_path: Union[str, Path], chunk_size: int = DEFAULT_CHUNK_SIZE) -> IncrementalHasher:
         """Update hash with file contents"""
         with open(file_path, "rb") as f:
             for chunk in iter(lambda: f.read(chunk_size), b""):
@@ -136,7 +137,7 @@ class IncrementalHasher:
         """Get final hex digest"""
         return self.hasher.hexdigest()
 
-    def copy(self) -> 'IncrementalHasher':
+    def copy(self) -> IncrementalHasher:
         """Create a copy of current state"""
         new_hasher = IncrementalHasher(self.algorithm)
         new_hasher.hasher = self.hasher.copy()

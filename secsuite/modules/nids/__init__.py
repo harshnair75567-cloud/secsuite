@@ -1,16 +1,23 @@
 """NIDS Module - Network Intrusion Detection System"""
 
-from .engine import SignatureEngine, HeuristicEngine, EventLogger, NIDSEngine, DetectionEvent, Signature
+from .engine import (
+    DetectionEvent,
+    EventLogger,
+    HeuristicEngine,
+    NIDSEngine,
+    Signature,
+    SignatureEngine,
+)
 from .worker import PortWorker, WorkerPool, run_nids
 
 __all__ = [
-    "SignatureEngine",
-    "HeuristicEngine",
-    "EventLogger",
-    "NIDSEngine",
     "DetectionEvent",
-    "Signature",
+    "EventLogger",
+    "HeuristicEngine",
+    "NIDSEngine",
     "PortWorker",
+    "Signature",
+    "SignatureEngine",
     "WorkerPool",
     "run_nids"
 ]

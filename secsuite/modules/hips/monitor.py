@@ -1,17 +1,22 @@
 """HIPS Module - Host Intrusion Prevention System"""
 
 import json
-import os
 import threading
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Set
 
-from ...utils.process import get_pids_for_file, get_process_info, kill_process, get_current_tty, is_process_safe
-from ...utils.fs import walk_files, atomic_write
-from ...logging import get_logger, JsonLogger
+from ...logging import get_logger
+from ...utils.fs import atomic_write, walk_files
+from ...utils.process import (
+    get_current_tty,
+    get_pids_for_file,
+    get_process_info,
+    is_process_safe,
+    kill_process,
+)
 
 
 @dataclass
@@ -156,7 +161,7 @@ class AccessMonitor:
             }
             with atomic_write(self.log_file, 'a') as f:
                 f.write(json.dumps(event_data) + "\n")
-        except (OSError, IOError) as e:
+        except OSError as e:
             self.logger.error(f"Failed to log event: {e}")
 
     def _respond(self, event: FileAccessEvent) -> None:

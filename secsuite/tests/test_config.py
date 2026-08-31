@@ -4,9 +4,7 @@ import json
 import tempfile
 from pathlib import Path
 
-import pytest
-
-from secsuite.config import Config, DEFAULT_CONFIG
+from secsuite.config import DEFAULT_CONFIG, Config
 
 
 class TestConfig:

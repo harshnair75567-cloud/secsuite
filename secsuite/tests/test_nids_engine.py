@@ -4,15 +4,12 @@ import json
 import tempfile
 from pathlib import Path
 
-import pytest
-
 from secsuite.modules.nids.engine import (
-    SignatureEngine,
-    HeuristicEngine,
+    DetectionEvent,
     EventLogger,
+    HeuristicEngine,
     NIDSEngine,
-    Signature,
-    DetectionEvent
+    SignatureEngine,
 )
 
 

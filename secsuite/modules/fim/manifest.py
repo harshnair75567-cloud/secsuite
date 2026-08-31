@@ -1,15 +1,13 @@
 """FIM Manifest - Baseline I/O operations"""
 
 import json
-import os
 from dataclasses import asdict
-from pathlib import Path
 from typing import Dict, Optional
 
-from .engine import PyHashEngine, FileEntry
-from .audit import sign_baseline, verify_baseline_integrity
-from ...utils.fs import atomic_write, read_json
 from ...logging import get_logger
+from ...utils.fs import atomic_write, read_json
+from .audit import sign_baseline, verify_baseline_integrity
+from .engine import FileEntry, PyHashEngine
 
 
 def save_manifest(
@@ -47,7 +45,7 @@ def save_manifest(
                     logger.error("Failed to sign baseline")
             return True
 
-    except (OSError, IOError, TypeError) as e:
+    except (OSError, TypeError) as e:
         logger.error(f"Failed to save manifest: {e}")
 
     return False
@@ -196,7 +194,7 @@ def run_fim_baseline(config: dict) -> None:
 def run_fim_audit(config: dict) -> None:
     """Run FIM audit"""
     from ...logging import setup_logging
-    from .audit import report_findings, generate_report
+    from .audit import generate_report, report_findings
 
     logger = setup_logging(config)
     fim_config = config.get("fim", {})

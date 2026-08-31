@@ -5,8 +5,6 @@ import logging
 import tempfile
 from pathlib import Path
 
-import pytest
-
 from secsuite.logging import JsonFormatter, JsonLogger, setup_logging
 
 

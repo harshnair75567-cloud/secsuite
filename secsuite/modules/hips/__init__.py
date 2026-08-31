@@ -1,10 +1,10 @@
 """HIPS Module - Host Intrusion Prevention System"""
 
-from .monitor import AccessMonitor, Responder, FileAccessEvent, run_hips
+from .monitor import AccessMonitor, FileAccessEvent, Responder, run_hips
 
 __all__ = [
     "AccessMonitor",
-    "Responder",
     "FileAccessEvent",
+    "Responder",
     "run_hips"
 ]

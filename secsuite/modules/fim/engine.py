@@ -1,16 +1,14 @@
 """FIM Engine - File Integrity Monitoring"""
 
-import hashlib
-import json
 import threading
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Generator, List, Optional
+from typing import Dict, List, Optional
 
-from ...utils.hashing import hash_file, HashAlgorithm
-from ...utils.fs import walk_files
 from ...logging import get_logger
+from ...utils.fs import walk_files
+from ...utils.hashing import HashAlgorithm, hash_file
 
 
 @dataclass

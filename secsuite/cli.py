@@ -2,15 +2,14 @@
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Optional
 
-from .config import Config, get_config, DEFAULT_CONFIG
-from .logging import setup_logging, get_logger
-from .daemon import create_runner, MultiServiceRunner
-from .modules import run_nids, run_hips, run_fim_baseline, run_fim_audit
+from .config import Config, get_config
+from .daemon import create_runner
+from .logging import get_logger, setup_logging
+from .modules import run_fim_audit, run_fim_baseline, run_hips, run_nids
 
 
 class SecSuiteCLI:

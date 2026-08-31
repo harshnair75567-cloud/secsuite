@@ -4,9 +4,8 @@ import json
 import os
 import shutil
 import tempfile
-from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Dict, Generator, Iterator, List, Optional, Set, Union
+from typing import Any, Dict, Iterator, List, Optional, Set, Union
 
 
 def walk_files(
@@ -66,7 +65,7 @@ def read_json(path: Union[str, Path], default: Any = None) -> Any:
     try:
         with open(path, 'r') as f:
             return json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError):
+    except (OSError, FileNotFoundError, json.JSONDecodeError):
         return default
 
 
@@ -132,7 +131,7 @@ def read_text(path: Union[str, Path], default: str = "") -> str:
     """Read text file safely"""
     try:
         return Path(path).read_text()
-    except (FileNotFoundError, IOError):
+    except (OSError, FileNotFoundError):
         return default
 
 

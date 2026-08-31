@@ -3,11 +3,11 @@
 import socket
 import threading
 import time
-from typing import Callable, List, Optional
+from typing import List, Optional
 
-from ...utils.net import create_listener, recv_hex
 from ...logging import get_logger
-from .engine import NIDSEngine, DetectionEvent
+from ...utils.net import create_listener, recv_hex
+from .engine import NIDSEngine
 
 
 class PortWorker:
@@ -145,7 +145,6 @@ class WorkerPool:
 def run_nids(config: dict) -> None:
     """Main NIDS entry point"""
     from ...logging import setup_logging
-    from ...config import get_config
 
     logger = setup_logging(config)
     nids_config = config.get("nids", {})

@@ -2,13 +2,13 @@
 
 import json
 import threading
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional
 
-from ...utils.fs import read_json, write_json
-from ...logging import JsonLogger, get_logger
+from ...logging import get_logger
+from ...utils.fs import read_json
 
 
 @dataclass
@@ -70,9 +70,7 @@ class SignatureEngine:
             tcp_flags = packet[13]
 
             for sig in self.signatures:
-                if sig.flags == 0 and tcp_flags == 0:
-                    matches.append(sig)
-                elif (tcp_flags & sig.flags) == sig.flags:
+                if sig.flags == 0 and tcp_flags == 0 or (tcp_flags & sig.flags) == sig.flags:
                     matches.append(sig)
 
         except (ValueError, IndexError):
@@ -170,9 +168,8 @@ class EventLogger:
         if event.payload_hex:
             event_data["payload_hex"] = event.payload_hex
 
-        with self._lock:
-            with open(self.log_file, "a") as f:
-                f.write(json.dumps(event_data) + "\n")
+        with self._lock, open(self.log_file, "a") as f:
+            f.write(json.dumps(event_data) + "\n")
 
         self.logger.log_event(
             event.event_type,

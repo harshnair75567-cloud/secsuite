@@ -1,15 +1,13 @@
 """FIM Audit - Integrity verification and reporting"""
 
-import hmac
-import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
-from .engine import PyHashEngine, FileEntry
-from ...utils.hashing import verify_hmac, generate_hmac
 from ...logging import get_logger
+from ...utils.hashing import generate_hmac, verify_hmac
+from .engine import FileEntry
 
 
 @dataclass
@@ -101,7 +99,7 @@ def sign_baseline(baseline_file: str, secret_key: str) -> bool:
         with open(baseline_file, 'wb') as f:
             f.write(content + signature.encode())
         return True
-    except (OSError, IOError):
+    except OSError:
         return False
 
 
@@ -146,7 +144,6 @@ def generate_report(
     output_file: Optional[str] = None
 ) -> str:
     """Generate detailed JSON report"""
-    import json
     from datetime import datetime
 
     report = {

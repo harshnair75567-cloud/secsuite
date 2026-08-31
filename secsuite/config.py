@@ -5,7 +5,6 @@ import os
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-
 DEFAULT_CONFIG = {
     "general": {
         "log_file": "secsuite.log",
@@ -68,7 +67,7 @@ class Config:
                 with open(self.config_path, 'r') as f:
                     user_config = json.load(f)
                 self._deep_merge(self._config, user_config)
-            except (json.JSONDecodeError, IOError) as e:
+            except (OSError, json.JSONDecodeError) as e:
                 print(f"[WARNING] Failed to load config from {self.config_path}: {e}")
 
     def _deep_merge(self, base: Dict, override: Dict) -> None:

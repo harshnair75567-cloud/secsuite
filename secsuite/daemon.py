@@ -3,11 +3,10 @@
 import atexit
 import os
 import signal
-import sys
 import threading
 import time
 from pathlib import Path
-from typing import Callable, Dict, List, Optional
+from typing import Callable, Dict, Optional
 
 
 class ServiceRunner:

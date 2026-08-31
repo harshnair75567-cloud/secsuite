@@ -3,12 +3,10 @@
 import json
 import logging
 import logging.handlers
-import os
 import sys
 import threading
 from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 
 class JsonFormatter(logging.Formatter):
