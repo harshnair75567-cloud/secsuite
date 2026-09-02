@@ -1,1 +1,1 @@
-
+FIM tamper-evident logging: Blockchain-based approach for FIM — either a Merkle tree or a rotating log that compresses 7 days of data — to make the file integrity manifest/audit history tamper-evident rather than a plain flat log.
