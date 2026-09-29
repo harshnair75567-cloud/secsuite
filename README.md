@@ -1,10 +1,5 @@
 # secsuite
 
-![CI](https://github.com/harshnair75567-cloud/secsuite/actions/workflows/ci.yml/badge.svg)
-![Python](https://img.shields.io/badge/python-3.x-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-beta-orange)
-
 A unified host and network security toolkit for Linux. It combines three previously separate tools into one package with a shared CLI, config, and logging layer:
 
 | Module | Purpose |
